@@ -24,18 +24,18 @@
 ## 2. 数组、形状和索引
 
 ```python
-import numpy as np
+import numpy as np  # 导入 NumPy，并把它简称为 np。
 
-scores = np.array([
-    [88, 92, 79],
-    [76, 85, 90],
-    [95, 89, 93],
-    [60, 72, 68],
-])
+scores = np.array([  # 创建一个二维数组，保存四名学生的成绩。
+    [88, 92, 79],  # 第一名学生的三次测验成绩。
+    [76, 85, 90],  # 第二名学生的三次测验成绩。
+    [95, 89, 93],  # 第三名学生的三次测验成绩。
+    [60, 72, 68],  # 第四名学生的三次测验成绩。
+])  # 完成数组创建。
 
-print(scores.shape)  # 4 名学生，3 次测验
-print(scores[0])     # 第一名学生的全部成绩
-print(scores[1, 0])  # 第二名学生第一次测验的成绩
+print(scores.shape)  # 显示形状：4 行、3 列。
+print(scores[0])  # 取出第一名学生的全部成绩。
+print(scores[1, 0])  # 取出第二名学生第一次测验的成绩。
 ```
 
 二维数组用 `[行, 列]` 定位。索引从 0 开始。数组的 `shape` 描述每个维度的长度。
@@ -43,8 +43,8 @@ print(scores[1, 0])  # 第二名学生第一次测验的成绩
 ## 3. 按行列计算
 
 ```python
-student_averages = scores.mean(axis=1)
-quiz_averages = scores.mean(axis=0)
+student_averages = scores.mean(axis=1)  # axis=1 沿每一行计算，得到每位学生的平均分。
+quiz_averages = scores.mean(axis=0)  # axis=0 沿每一列计算，得到每次测验的平均分。
 ```
 
 `axis=1` 沿每一行计算，得到每位学生的平均分；`axis=0` 沿每一列计算，得到每次测验的平均分。
@@ -52,8 +52,8 @@ quiz_averages = scores.mean(axis=0)
 ## 4. 向量化和条件筛选
 
 ```python
-improved_scores = np.minimum(scores + 2, 100)
-high_scores = scores[scores >= 90]
+improved_scores = np.minimum(scores + 2, 100)  # 所有成绩加 2 分，最高限制为 100 分。
+high_scores = scores[scores >= 90]  # 选出所有不低于 90 分的成绩。
 ```
 
 第一行一次性给所有成绩加 2 分，并用 100 封顶。第二行选出所有不低于 90 分的成绩。这类整组运算通常比手动逐项循环更简洁。
